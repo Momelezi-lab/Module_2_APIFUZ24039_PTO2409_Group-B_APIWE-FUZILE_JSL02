@@ -32,9 +32,10 @@ const addNewGoal = () => {
   const goalList = document.querySelector("#goalList");
   const existingGoals = goalList.querySelectorAll("li"); // Get all existing goals
 
-  // Check for duplicates
-  for (let goal of existingGoals) {
-    if (goal.textContent === goalInput) {
+  // Loop through existing goals to check for duplicates
+  for (let i = 0; i < existingGoals.length; i++) {
+    if (existingGoals[i].textContent === goalInput) {
+      // Compare each goal's text content with the input
       alert("This goal already exists! Please enter a new goal."); // Alert the user
       return; // Stop the function
     }
@@ -42,11 +43,12 @@ const addNewGoal = () => {
 
   // Add the new goal if no duplicate is found
   if (goalInput !== "") {
+    // Ensure the input is not empty
     const newGoal = document.createElement("li");
     newGoal.textContent = goalInput;
     goalList.appendChild(newGoal);
   } else {
-    alert("Please enter a valid goal!");
+    alert("Please enter a valid goal!"); // Alert for empty input
   }
 };
 
